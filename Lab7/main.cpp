@@ -1,73 +1,82 @@
 #include <iostream>
-#include <string>
-
 using namespace std;
 
-class Car {
-protected:
-    string m_brand;
+class Car{
+    private:
+    string brand;
     string m_model;
     int m_year;
-    int m_numDoors;
-
-public:
-    Car(string brand, string model, int year, int numDoors)
-        : m_brand(brand), m_model(model), m_year(year), m_numDoors(numDoors) {}
-
-    string getBrand() { return m_brand; }
-    string getModel() { return m_model; }
-    int getYear() { return m_year; }
-    int getNumDoors() { return m_numDoors; }
+    int m_MaxSeating;
+    
+    public:
+    Car(string x, string y, int z, int s){
+        brand = x;
+        m_model = y;
+        m_year = z;
+        m_MaxSeating = s;
+    }
+    int get_m_maxseating(){
+        return m_MaxSeating;
+    }
+    string m_brand(){
+        return brand;
+    }
 };
 
-class BMW_Car : public Car {
-private:
+class BMW_Car : public Car{
+    private:
     string m_DriveMode;
-
-public:
-    BMW_Car(string model, int year, int numDoors) : Car("BMW", model, year, numDoors) {
-        cout << "Constructing BMW_Car\n";
+    
+    public:
+    BMW_Car(string y, int z, int s) : Car("BMW", y, z, s){
+        cout<< "Constructing BMW_car\n";
         m_DriveMode = "Rear-wheel";
     }
-
-    string getDriveMode() { return m_DriveMode; }
+    string get_DriveMode(){
+        return m_DriveMode;
+    }
 };
 
-class AUDI_Car : public Car {
-private:
+class AUDI_Car : public Car{
+    private:
     string m_DriveMode;
-
-public:
-    AUDI_Car(string model, int year, int numDoors) : Car("AUDI", model, year, numDoors) {
-        cout << "Constructing AUDI_Car\n";
+    
+    public:
+    AUDI_Car(string y, int z, int s) : Car("AUDI", y, z, s){
+        cout<< "Constructing AUDI_car\n";
         m_DriveMode = "Front-wheel";
     }
-
-    string getDriveMode() { return m_DriveMode; }
+    string get_DriveMode(){
+        return m_DriveMode;
+    }
 };
 
-class BENZ_Car : public Car {
-private:
+class BENZ_Car : public Car{
+    private:
     string m_DriveMode;
-
-public:
-    BENZ_Car(string model, int year, int numDoors) : Car("BENZ", model, year, numDoors) {
-        cout << "Constructing BENZ_Car\n";
+    
+    public:
+    BENZ_Car(string y, int z, int s) : Car("BENZ", y, z, s){
+        cout<< "Constructing BENZ_car\n";
         m_DriveMode = "Front-wheel";
     }
-
-    string getDriveMode() { return m_DriveMode; }
+    string get_DriveMode(){
+        return m_DriveMode;
+    }
 };
 
-int main() {
-    BMW_Car car1(" ", 2023, 6);
-    cout << car1.getBrand() << " " << car1.getModel() << ": Drive Mode = " << car1.getDriveMode() << endl;
-
-    AUDI_Car car2(" ", 2023, 4);
-    cout << car2.getBrand() << " " << car2.getModel() << ": Drive Mode = " << car2.getDriveMode() << endl;
-
-    BENZ_Car car3(" ", 2023, 4);
-    cout << car3.getBrand() << " " << car3.getModel() << ": Drive Mode = " << car3.getDriveMode() << endl;
-
-    return 0;
+int main(){
+   BMW_Car car1("X5", 2023, 6);
+   cout << car1.m_brand();
+   cout<< " Drive Mode = "<< car1.get_DriveMode()<<endl;
+   
+   AUDI_Car car2("A8", 2023, 6);
+   cout << car2.m_brand();
+   cout<< " Drive Mode = "<< car2.get_DriveMode()<<endl;
+   
+   BENZ_Car car3("c300", 2023, 6);
+   cout << car3.m_brand();
+   cout<< " Drive Mode = "<< car3.get_DriveMode()<<endl;
+   
+   return 0;
 }
